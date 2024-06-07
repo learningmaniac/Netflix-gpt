@@ -1,16 +1,21 @@
 import React, { useState, useRef } from 'react'
 import Header from './Header';
 import validates from '../utils/validates';
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { adduser } from '../utils/userSlice';
 
 const Login = () => {
 
   const [isSignForm,setisSignForm] = useState(true);
   const [ErrorMessage,setErrorMessage] = useState(null);
+  const dispatch = useDispatch();
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
+  const navigate = useNavigate();
   
   const toggleSignform = () => {
         setisSignForm(!isSignForm);
@@ -29,6 +34,20 @@ const Login = () => {
           .then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
+
+            updateProfile(user, {
+              displayName: name.current.value,
+            }).then(() => {
+              // Profile updated!
+              // ...
+
+            }).catch((error) => {
+              // An error occurred
+              // ...
+              setErrorMessage(error.message);
+            });
+         
+            
             // ...
           })
           .catch((error) => {
