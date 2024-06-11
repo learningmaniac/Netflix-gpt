@@ -3,6 +3,7 @@ import Header from './Header';
 import validates from '../utils/validates';
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from '../utils/firebase'
+import { BG_IMG } from '../Contants';
 
 
 const Login = () => {
@@ -79,7 +80,7 @@ const Login = () => {
 
          <Header />
          <div className='absolute'>
-           <img src='https://assets.nflxext.com/ffe/siteui/vlv3/dd4dfce3-1a39-4b1a-8e19-b7242da17e68/86742114-c001-4800-a127-c9c89ca7bbe4/IN-en-20240527-popsignuptwoweeks-perspective_alpha_website_large.jpg'
+           <img src={BG_IMG}
             alt='Netflix-background-image'
            />
          </div>
