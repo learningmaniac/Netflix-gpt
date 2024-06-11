@@ -3,9 +3,10 @@ import GptBar from './GptBar';
 import { useSelector } from 'react-redux';
 
 const GptSearch = () => {
-  const lang = useSelector(store => store.config.lang);
+ 
+
   return (
-    <div className="">
+    <div className="fixed -z-10">
       <GptBar/>
       GptMovieSuggestion
     </div>

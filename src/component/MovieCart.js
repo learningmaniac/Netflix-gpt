@@ -2,6 +2,7 @@ import React from 'react'
 import { IMG_CDN_URL } from '../Contants'
 
 const MovieCart = ({posterPath}) => {
+  if(!posterPath) return;
   return (
     <div className='w-[300px] pr-4'>
         <img alt='Movie Cart'
